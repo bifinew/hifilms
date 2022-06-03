@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hifilms - Video Player</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="index.js"></script>
+        <style type="text/css">
+            
+            *{
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    text-decoration: none;  
+}
+            .video-container {
+    overflow: hidden;
+    position: relative;
+    width:100%;
+    background: #252A34;
+}
+.video-container::after {
+    padding-top: 100vh;
+    display: block;
+    content: '';
+}
+    .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+        </style>
+    </head>
+    <body>
+        <!--<div class="footer">
+            <div class="footer-no">
+            <div>
+            <img src="no.png">
+            <h1>Whoops!</h1>
+            <p>There seems to be a problem with you Network Connection</p>
+            <span class="button" onClick="window.location.reload()";>Try Again</span></br>
+            <span class="button icon-back" onclick="history.back()";></span>
+            </div>
+        </div>
+        </div>-->
+        <div class="video-container"><div id="player"></div></div>
+        <script>
+            var url_string = window.location.href;
+            var url = new URL(url_string);
+            var c = url.searchParams.get("q");
+            var videoId= c;
+            var tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            var player;
+            function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+            playerVars: {
+            autoplay: 1,
+            loop: 1,
+	   //'fs':0,
+            controls: 1,},
+            videoId: videoId,
+            events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange}});}
+            function onPlayerReady(event) {
+            event.target.playVideo();}
+            var done = false;
+            function onPlayerStateChange(event) {}
+        </script>
+    </body>
+</html>

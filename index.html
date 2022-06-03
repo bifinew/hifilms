@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>hifilms - Movies</title>
+        <script src="https://hifilmsbiswabyapihalderghoraghata.on.drv.tw/hi/ofmovie.js"></script>
+
+        <style type="text/css">
+
+:root {
+  --color: #252A34;
+  --pcolor: #252A34;
+  --pcolor: #252A34;
+}
+            *{
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    text-decoration: none;  
+}
+body{
+    background: var(--color);
+    color: #eeeef1;
+    font-family: 'Lato', sans-serif;
+}
+bodya{
+    background:  #eeeef1;
+    color: #252A34;
+    font-family: 'Lato', sans-serif;
+}
+h1{
+    color:#2056cd ;
+}
+.width {
+display: flex;
+justify-content:space-between;
+flex-wrap:wrap;
+margin: 8px;
+}
+.width p {
+ width: 49%;
+margin-bottom: 8px;
+}
+
+.img{
+position: relative;
+background: #353d4b;
+overflow:hidden;
+border-radius: 4px;
+}
+.img::after{
+padding-top: 56.25%;
+display: block;
+content: '';
+}
+.img img{
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+}
+   .hjk {background-color: #858585;}         
+        </style>
+    </head>
+    <body>
+        <div class="width" id="lists">list</div>
+
+    </body>
+    
+    <script type="text/javascript">
+
+        
+        localStorage.setItem("ilist", JSON.stringify(ilist));
+            var moviesLists = JSON.parse(localStorage.getItem("ilist"));
+        
+        function getRandomElemeents(list){
+            return [...list].sort(()=> Math.random()>0.5?1:-1).slice(0,900)
+        }
+        var moviesList = getRandomElemeents(moviesLists);
+            let i = 0;
+            let len = moviesList.length;
+            let text = "";
+            for (; i < len; i++) {
+                   text += "<p class="+"img"+"><a href="+"video.html?q=" + moviesList[i] + "><img src="+"https://hifilmsbiswabyapihalderghoraghata.on.drv.tw/hi/movie/"+ moviesList[i] +".jpg"+"></a></p>";}
+            document.getElementById("lists").innerHTML = text;
+        console.log(moviesList);
+    </script>
+
+</html>
